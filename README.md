@@ -25,16 +25,6 @@
 - **Хеш-таблица**: Для быстрого доступа по ключу (O(1))
 - **TTL-механизм**: Временные метки expiration time
 
-```java
-public class LRUCache<K, V> {
-    private final int capacity;
-    private final long ttlMillis;
-    private final Map<K, Node<K, V>> cache;
-    private Node<K, V> head;
-    private Node<K, V> tail;
-}
-```
-
 ### Сложность операций:
 | Операция | Сложность |
 |----------|-----------|
