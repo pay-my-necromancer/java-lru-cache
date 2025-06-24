@@ -1,2 +1,82 @@
-# java-lru-cache
-LRU-кеш с TTL
+# LRU Cache с поддержкой TTL
+
+[![Java](https://img.shields.io/badge/Java-17%2B-blue)](https://openjdk.org/)
+[![Gradle](https://img.shields.io/badge/Gradle-7.4%2B-green)](https://gradle.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+
+Реализация кеша с алгоритмом LRU и временем жизни элементов на Java.
+
+## Описание задачи
+
+Проект решает задачу эффективного кеширования данных с:
+- Ограничением по количеству элементов (LRU)
+- Автоматическим удалением устаревших данных (TTL)
+- Потокобезопасностью для использования в многопоточной среде
+
+**Актуальность**: Такие кеши широко применяются в:
+- Веб-приложениях (кеширование API-ответов)
+- Базах данных (буферизация запросов)
+- Системных приложениях (управление памятью)
+
+## Алгоритм и структуры данных
+
+### Основные компоненты:
+- **Двусвязный список**: Для отслеживания порядка использования элементов
+- **Хеш-таблица**: Для быстрого доступа по ключу (O(1))
+- **TTL-механизм**: Временные метки expiration time
+
+```java
+public class LRUCache<K, V> {
+    private final int capacity;
+    private final long ttlMillis;
+    private final Map<K, Node<K, V>> cache;
+    private Node<K, V> head;
+    private Node<K, V> tail;
+}
+```
+
+### Сложность операций:
+| Операция | Сложность |
+|----------|-----------|
+| `get()`  | O(1)      |
+| `put()`  | O(1)      |
+
+## Архитектура проекта
+
+```
+src/
+├── main/
+│   └── java/
+│       └── com/
+│           └── example/
+│               └── lrucache/
+│                   ├── LRUCache.java  # Основная реализация
+│                   └── Main.java      # Демонстрация
+└── test/
+    └── java/
+        └── com/
+            └── example/
+                └── lrucache/
+                    └── LRUCacheTest.java  # Юнит-тесты
+```
+
+## Инструкция по сборке и запуску
+
+### Требования
+- JDK 17+
+- Gradle 7.4+
+
+### Сборка проекта
+```bash
+./gradlew build
+```
+
+### Запуск демонстрации
+```bash
+./gradlew run
+```
+
+### Запуск тестов
+```bash
+./gradlew test
+```
