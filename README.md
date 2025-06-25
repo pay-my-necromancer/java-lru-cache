@@ -1,9 +1,5 @@
 # LRU Cache с поддержкой TTL
 
-[![Java](https://img.shields.io/badge/Java-17%2B-blue)](https://openjdk.org/)
-[![Gradle](https://img.shields.io/badge/Gradle-7.4%2B-green)](https://gradle.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
-
 Реализация кеша с алгоритмом LRU и временем жизни элементов на Java.
 
 ## Описание задачи
